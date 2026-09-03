@@ -1,5 +1,8 @@
-#  ShilpSetu
+<p align="center" border-redius="10">
+  <img src="https://cdn.corenexis.com/f/xIpLtuvYVDu.png" width="200">
+</p>
 
+#  ShilpSetu
 ### AI-Powered Digital Marketplace & Business Assistant for Marginalized Artisans
 
 > **From Tradition to Market, Powered by AI.**
