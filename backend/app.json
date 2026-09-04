@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "android": {
+      "package": "com.shilpsetu.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ace836ed-77dc-4819-a7df-1c77bb4aea07"
+      }
+    }
+  }
+}
