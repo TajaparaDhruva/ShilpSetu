@@ -1,0 +1,7 @@
+# Exclude specification, status tracking, and reference assets from git
+prompt*.md
+prompt (1).md
+prompt.md
+PROJECT_STATUS.md
+screens-33-49/
+node_modules/

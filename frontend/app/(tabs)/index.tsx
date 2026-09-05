@@ -1,98 +1,275 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  Pressable,
+  Image,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { AppHeader } from '../../components/ui/AppHeader';
+import { SearchBar } from '../../components/ui/SearchBar';
+import { CategoryChip } from '../../components/ui/CategoryChip';
+import { ArtisanCard } from '../../components/ui/ArtisanCard';
+import { ProductCard } from '../../components/ui/ProductCard';
+import { CATEGORIES } from '../../constants/mockData';
+import { ShilpColors, Typography, Spacing, BorderRadius } from '../../constants/theme';
+import { useApp } from '../../context/AppContext';
+import { IconSymbol } from '../../components/ui/icon-symbol';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function DiscoverScreen() {
+  const router = useRouter();
+  const { artisans, products } = useApp();
+  const [selectedCat, setSelectedCat] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
-export default function HomeScreen() {
+  const filteredProducts = products.filter((p) => {
+    const matchesCat = selectedCat === 'All' || p.category === selectedCat;
+    const matchesSearch =
+      !searchQuery ||
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.artisanName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCat && matchesSearch;
+  });
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <SafeAreaView style={styles.safeArea}>
+      <AppHeader />
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}>
+        {/* Hero Banner */}
+        <View style={styles.heroBanner}>
+          <View style={styles.heroTextWrapper}>
+            <Text style={styles.tagline}>HUNAR SE BAZAAR TAK</Text>
+            <Text style={styles.heroTitle}>Discover Authentic Indian Artisans</Text>
+            <Text style={styles.heroSubtitle}>
+              Directly connect with master craftspeople across India.
+            </Text>
+
+            <Pressable
+              style={styles.rfqButton}
+              onPress={() => router.push('/rfq/create')}>
+              <IconSymbol name="plus.circle.fill" size={16} color={ShilpColors.white} />
+              <Text style={styles.rfqButtonText}>Post Requirement / RFQ</Text>
+            </Pressable>
+          </View>
+        </View>
+
+        {/* Search Bar */}
+        <View style={styles.sectionPadding}>
+          <SearchBar
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            onFilterPress={() => router.push('/filters')}
+            onSubmit={() => router.push({ pathname: '/search', params: { q: searchQuery } })}
+          />
+        </View>
+
+        {/* Craft Categories */}
+        <View style={styles.categorySection}>
+          <Text style={styles.sectionTitle}>Browse Craft Categories</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categoriesScroll}>
+            <CategoryChip
+              label="All Crafts"
+              selected={selectedCat === 'All'}
+              onPress={() => setSelectedCat('All')}
+              iconName="sparkles"
+            />
+            {CATEGORIES.map((cat) => (
+              <CategoryChip
+                key={cat.id}
+                label={cat.name}
+                selected={selectedCat === cat.name}
+                onPress={() => setSelectedCat(cat.name)}
+                iconName={cat.icon}
+              />
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Recommended Artisans Section */}
+        <View style={styles.sectionMargin}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Master Artisans</Text>
+            <Pressable onPress={() => router.push('/search')}>
+              <Text style={styles.seeAllText}>See All →</Text>
+            </Pressable>
+          </View>
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.horizontalScroll}>
+            {artisans.map((artisan) => (
+              <ArtisanCard key={artisan.id} artisan={artisan} horizontal />
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Featured Products */}
+        <View style={styles.sectionPadding}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Handcrafted Products</Text>
+            <Text style={styles.resultsCount}>{filteredProducts.length} Items</Text>
+          </View>
+
+          <View style={styles.productGrid}>
+            {filteredProducts.map((product) => (
+              <View key={product.id} style={styles.gridItem}>
+                <ProductCard product={product} />
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* AI Assistant Callout */}
+        <Pressable style={styles.aiBanner} onPress={() => router.push('/(tabs)/ai')}>
+          <View style={styles.aiIconCircle}>
+            <IconSymbol name="sparkles" size={24} color={ShilpColors.white} />
+          </View>
+          <View style={styles.aiTextWrapper}>
+            <Text style={styles.aiTitle}>Need help finding a specific craft?</Text>
+            <Text style={styles.aiSub}>Ask ShilpSetu AI Assistant for recommendations</Text>
+          </View>
+          <IconSymbol name="chevron.right" size={20} color={ShilpColors.primary} />
+        </Pressable>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  safeArea: {
+    flex: 1,
+    backgroundColor: ShilpColors.background,
+  },
+  scrollContent: {
+    paddingBottom: Spacing['3xl'],
+  },
+  heroBanner: {
+    backgroundColor: ShilpColors.primary,
+    margin: Spacing.md,
+    borderRadius: BorderRadius.card,
+    padding: Spacing.lg,
+  },
+  heroTextWrapper: {
+    alignItems: 'flex-start',
+  },
+  tagline: {
+    ...Typography.caption,
+    color: ShilpColors.softPeach,
+    letterSpacing: 1.5,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  heroTitle: {
+    ...Typography.heading1,
+    color: ShilpColors.white,
+    fontSize: 24,
+    marginBottom: 4,
+  },
+  heroSubtitle: {
+    ...Typography.bodySmall,
+    color: 'rgba(255, 255, 255, 0.9)',
+    marginBottom: Spacing.md,
+  },
+  rfqButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 6,
+    backgroundColor: ShilpColors.primaryDark,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs + 4,
+    borderRadius: BorderRadius.pill,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  rfqButtonText: {
+    ...Typography.button,
+    fontSize: 14,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  sectionPadding: {
+    paddingHorizontal: Spacing.md,
+  },
+  sectionMargin: {
+    marginBottom: Spacing.lg,
+  },
+  categorySection: {
+    marginBottom: Spacing.lg,
+  },
+  categoriesScroll: {
+    paddingHorizontal: Spacing.md,
+    paddingTop: Spacing.xs,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.sm,
+  },
+  sectionTitle: {
+    ...Typography.heading2,
+    fontSize: 19,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.xs,
+  },
+  seeAllText: {
+    ...Typography.bodySmall,
+    color: ShilpColors.primary,
+    fontWeight: '700',
+  },
+  resultsCount: {
+    ...Typography.caption,
+    color: ShilpColors.textMuted,
+  },
+  horizontalScroll: {
+    paddingHorizontal: Spacing.md,
+  },
+  productGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing.md,
+    justifyContent: 'space-between',
+  },
+  gridItem: {
+    width: '47.5%',
+  },
+  aiBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: ShilpColors.surfaceCard,
+    marginHorizontal: Spacing.md,
+    marginTop: Spacing.md,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.card,
+    borderWidth: 1,
+    borderColor: ShilpColors.border,
+  },
+  aiIconCircle: {
+    width: 44,
+    height: 44,
+    borderRadius: BorderRadius.pill,
+    backgroundColor: ShilpColors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: Spacing.md,
+  },
+  aiTextWrapper: {
+    flex: 1,
+  },
+  aiTitle: {
+    ...Typography.heading3,
+    fontSize: 14,
+  },
+  aiSub: {
+    ...Typography.caption,
+    color: ShilpColors.textSecondary,
   },
 });
