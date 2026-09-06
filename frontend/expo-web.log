@@ -1,0 +1,140 @@
+
+> frontend@1.0.0 web
+> expo start --web
+
+Starting project at E:\shilpSetu\ShilpSetu\frontend
+React Compiler enabled
+Starting Metro Bundler
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+| (node:26872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:18080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:12016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:26724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:13600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:18676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:26672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:11812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:7780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+Web node_modules\expo-router\entry.js ▓▓░░░░░░░░░░░░░░ 16.0% ( 4/10)
+λ node_modules\expo-router\node\render.js ▓░░░░░░░░░░░░░░░  8.4% ( 47/172)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 32.4% (235/413)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓░░░░░░░░ 54.4% (472/640)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓░░░░░░░░ 54.5% (488/661)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 75.9% (807/926)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 69.4% (710/885)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 88.7% (938/996)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 94.0% (1079/1113)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 94.5% (1150/1183)
+λ Bundled 17487ms node_modules\expo-router\node\render.js (1205 modules)
+λ  WARN  [Layout children]: No route named "products" exists in nested children: [
+  'home',
+  'notifications',
+  'profile',
+  'settings',
+  'products/[id]',
+  'products/create',
+  'products/index'
+] 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  map (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:69:21)
+  getSortedChildren (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:62:10)
+  useSortedScreens (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:121:38)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\layouts\withLayoutContext.js:151:57)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  warnOnce (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\warnOnce\index.js:24:13)
+  createDOMProps (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\createDOMProps\index.js:805:13)
+  createElement (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\createElement\index.js:23:32)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\View\index.js:111:23)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+  renderNodeDestructive (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5849:11)
+"shadow*" style props are deprecated. Use "boxShadow".
+Web Bundled 19520ms node_modules\expo-router\entry.js (1194 modules)
+Web node_modules\expo-router\entry.js ▓▓░░░░░░░░░░░░░░ 18.6% (162/376)
+λ Bundled 67ms node_modules\expo-router\node\render.js (1 module)
+λ  WARN  [Layout children]: No route named "products" exists in nested children: [
+  'home',
+  'notifications',
+  'profile',
+  'settings',
+  'products/[id]',
+  'products/create',
+  'products/index'
+] 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  map (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:69:21)
+  getSortedChildren (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:62:10)
+  useSortedScreens (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:121:38)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\layouts\withLayoutContext.js:151:57)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  warnOnce (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\warnOnce\index.js:24:13)
+  createDOMProps (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\createDOMProps\index.js:805:13)
+  createElement (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\createElement\index.js:23:32)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\View\index.js:111:23)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+  renderNodeDestructive (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5849:11)
+"shadow*" style props are deprecated. Use "boxShadow".
+Web Bundled 689ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 87.9% ( 947/1010)
+Web Bundled 5196ms node_modules\expo-router\entry.js (1195 modules)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 130ms node_modules\expo-router\node\render.js (1 module)
+λ  WARN  [Layout children]: No route named "products" exists in nested children: [
+  'home',
+  'notifications',
+  'profile',
+  'settings',
+  'products/[id]',
+  'products/create',
+  'products/index'
+] 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  map (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:69:21)
+  getSortedChildren (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:62:10)
+  useSortedScreens (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\useScreens.js:121:38)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo-router\build\layouts\withLayoutContext.js:151:57)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents 
+  console.warn (E:\shilpSetu\ShilpSetu\frontend\node_modules\expo\node_modules\@expo\cli\src\start\server\serverLogLikeMetro.ts:161:21)
+  warnOnce (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\warnOnce\index.js:24:13)
+  createDOMProps (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\modules\createDOMProps\index.js:805:13)
+  createElement (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\createElement\index.js:23:32)
+  Component (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-native-web\dist\exports\View\index.js:111:23)
+  Object.callComponentInDEV [as react-stack-bottom-frame] (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:8970:18)
+  renderWithHooks (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:4699:19)
+  run (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5539:39)
+  retryNode (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5899:31)
+  renderNodeDestructive (E:\shilpSetu\ShilpSetu\frontend\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5849:11)
+"shadow*" style props are deprecated. Use "boxShadow".
+Web Bundled 1087ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 50ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
