@@ -1,176 +1,181 @@
 import React, { createContext, useContext, useState } from 'react';
-import {
-  MOCK_ARTISANS,
-  MOCK_CONVERSATIONS,
-  MOCK_MESSAGES,
-  MOCK_NOTIFICATIONS,
-  MOCK_PRODUCTS,
-  MOCK_QUOTES,
-  MOCK_REQUESTS,
-} from '../constants/mockData';
+import AsyncStorage from '@react-native-async-storage/async-storage';import { jsx as _jsx } from "react/jsx-runtime";
 
-const defaultFilters = {
-  category: 'All',
-  maxPrice: 50000,
-  minRating: 0,
-  location: 'All India',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const initialArtisanProfile = {
+  fullName: 'Meera Patel',
+  mobile: '+91 98765 43210',
+  location: 'Kutch, Gujarat',
+  languages: ['Hindi', 'Gujarati'],
+  shopName: 'Heritage Clay & Handloom',
+  craftCategory: 'Pottery',
+  materials: ['Clay', 'Terracotta'],
+  experienceYears: 8,
+  idDocument: null,
+  accountHolder: 'Meera Patel',
+  upiId: 'meera@upi'
 };
 
-const AppContext = createContext(undefined);
+const initialBuyerProfile = {
+  fullName: '',
+  email: '',
+  location: '',
+  budgetRange: [500, 3000],
+  preferredCategories: [],
+  language: 'English',
+  interests: []
+};
+
+const initialProducts = [
+{
+  id: '1',
+  name: 'Handcrafted Terracotta Vase',
+  category: 'Pottery',
+  price: 499,
+  stock: 15,
+  description: 'Traditional painted terracotta vase handcrafted by Gujarat artisans.',
+  shippingTime: '3-5 days',
+  isLive: true,
+  images: ['https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=400'],
+  status: 'In Stock'
+},
+{
+  id: '2',
+  name: 'Embroidered Potli Bag',
+  category: 'Textiles',
+  price: 699,
+  stock: 8,
+  description: 'Silk embroidered potli bag with zardozi work and gold tassels.',
+  shippingTime: '1-3 days',
+  isLive: true,
+  images: ['https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=400'],
+  status: 'In Stock'
+},
+{
+  id: '3',
+  name: 'Wooden Wall Art Panel',
+  category: 'Wood Craft',
+  price: 1299,
+  stock: 2,
+  description: 'Carved rosewood decorative wall plate featuring royal floral motifs.',
+  shippingTime: '3-5 days',
+  isLive: true,
+  images: ['https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=400'],
+  status: 'Low Stock'
+}];
+
+
+const AppContext = /*#__PURE__*/createContext(undefined);
 
 export const AppProvider = ({ children }) => {
-  const [artisans, setArtisans] = useState(MOCK_ARTISANS);
-  const [products, setProducts] = useState(MOCK_PRODUCTS);
-  const [requests, setRequests] = useState(MOCK_REQUESTS);
-  const [quotes, setQuotes] = useState(MOCK_QUOTES);
-  const [conversations, setConversations] = useState(MOCK_CONVERSATIONS);
-  const [messages, setMessages] = useState(MOCK_MESSAGES);
-  const [notifications, setNotifications] = useState(MOCK_NOTIFICATIONS);
-  const [filters, setFilters] = useState(defaultFilters);
+  const [role, setRoleState] = useState('artisan');
+  const [mobileNumber, setMobileNumber] = useState('+91 98765 43210');
+  const [artisanProfile, setArtisanProfile] = useState(initialArtisanProfile);
+  const [buyerProfile, setBuyerProfile] = useState(initialBuyerProfile);
+  const [products, setProducts] = useState(initialProducts);
+  const [language, setLanguage] = useState('hi');
 
-  const toggleSaveArtisan = (id) => {
-    setArtisans((prev) =>
-      prev.map((art) => (art.id === id ? { ...art, saved: !art.saved } : art))
-    );
+  const setRole = (newRole) => {
+    setRoleState(newRole);
+    AsyncStorage.setItem('user_role', newRole || '');
   };
 
-  const toggleSaveProduct = (id) => {
-    setProducts((prev) =>
-      prev.map((prod) => (prod.id === id ? { ...prod, saved: !prod.saved } : prod))
-    );
+  const updateArtisanProfile = (data) => {
+    setArtisanProfile((prev) => ({ ...prev, ...data }));
   };
 
-  const createRequest = (newReq) => {
-    const created = {
-      ...newReq,
-      id: `req-${Date.now()}`,
-      createdAt: new Date().toISOString().split('T')[0],
-      quotesCount: 0,
-      status: 'Active',
+  const updateBuyerProfile = (data) => {
+    setBuyerProfile((prev) => ({ ...prev, ...data }));
+  };
+
+  const addProduct = (newProd) => {
+    const item = {
+      ...newProd,
+      id: Date.now().toString()
     };
-    setRequests((prev) => [created, ...prev]);
-
-    const newNotif = {
-      id: `notif-${Date.now()}`,
-      type: 'request',
-      title: 'Requirement Published! ✨',
-      message: `Your requirement "${created.title}" is live for artisans to respond.`,
-      timestamp: 'Just now',
-      read: false,
-      targetScreen: 'request-detail',
-      targetId: created.id,
-    };
-    setNotifications((prev) => [newNotif, ...prev]);
+    setProducts((prev) => [item, ...prev]);
   };
 
-  const acceptQuote = (quoteId, requestId) => {
-    setQuotes((prev) =>
-      prev.map((q) => {
-        if (q.id === quoteId) return { ...q, status: 'accepted' };
-        if (q.requestId === requestId) return { ...q, status: 'rejected' };
-        return q;
-      })
-    );
-    setRequests((prev) =>
-      prev.map((req) => (req.id === requestId ? { ...req, status: 'Accepted' } : req))
-    );
-  };
-
-  const sendMessage = (conversationId, text) => {
-    if (!text.trim()) return;
-    const newMsg = {
-      id: `msg-${Date.now()}`,
-      conversationId,
-      senderId: 'user-1',
-      senderName: 'You',
-      text: text.trim(),
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      isMe: true,
-      read: true,
-    };
-
-    setMessages((prev) => ({
-      ...prev,
-      [conversationId]: [...(prev[conversationId] || []), newMsg],
-    }));
-
-    setConversations((prev) =>
-      prev.map((conv) =>
-        conv.id === conversationId
-          ? { ...conv, lastMessage: text.trim(), lastTimestamp: 'Just now' }
-          : conv
-      )
-    );
-  };
-
-  const markNotificationAsRead = (id) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
-  };
-
-  const updateFilters = (newFilters) => {
-    setFilters((prev) => ({ ...prev, ...newFilters }));
-  };
-
-  const resetFilters = () => {
-    setFilters(defaultFilters);
-  };
-
-  const getOrCreateConversation = (
-    artisanId,
-    artisanName,
-    artisanAvatar,
-    artisanCraft
-  ) => {
-    const existing = conversations.find((c) => c.artisanId === artisanId);
-    if (existing) return existing.id;
-
-    const newConvId = `conv-${Date.now()}`;
-    const newConv = {
-      id: newConvId,
-      artisanId,
-      artisanName,
-      artisanAvatar,
-      artisanCraft,
-      lastMessage: 'Conversation started',
-      lastTimestamp: 'Just now',
-      unreadCount: 0,
-    };
-
-    setConversations((prev) => [newConv, ...prev]);
-    setMessages((prev) => ({ ...prev, [newConvId]: [] }));
-    return newConvId;
-  };
-
-  return (
-    <AppContext.Provider
-      value={{
-        artisans,
+  return (/*#__PURE__*/
+    _jsx(AppContext.Provider, {
+      value: {
+        role,
+        setRole,
+        mobileNumber,
+        setMobileNumber,
+        artisanProfile,
+        updateArtisanProfile,
+        buyerProfile,
+        updateBuyerProfile,
         products,
-        requests,
-        quotes,
-        conversations,
-        messages,
-        notifications,
-        filters,
-        toggleSaveArtisan,
-        toggleSaveProduct,
-        createRequest,
-        acceptQuote,
-        sendMessage,
-        markNotificationAsRead,
-        updateFilters,
-        resetFilters,
-        getOrCreateConversation,
-      }}>
-      {children}
-    </AppContext.Provider>
-  );
+        addProduct,
+        language,
+        setLanguage
+      }, children:
+
+      children }
+    ));
+
 };
 
 export const useApp = () => {
-  const context = useContext(AppContext);
-  if (!context) throw new Error('useApp must be used within AppProvider');
-  return context;
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error('useApp must be used within AppProvider');
+  return ctx;
 };

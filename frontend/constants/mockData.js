@@ -1,315 +1,215 @@
-export const CATEGORIES = [
-  { id: 'cat-1', name: 'Pottery & Ceramics', icon: 'pawprint.fill', count: '120+ Artisans' },
-  { id: 'cat-2', name: 'Handloom & Textiles', icon: 'hand.raised.fill', count: '250+ Artisans' },
-  { id: 'cat-3', name: 'Woodwork & Carving', icon: 'hammer.fill', count: '95+ Artisans' },
-  { id: 'cat-4', name: 'Metal & Brassware', icon: 'sparkles', count: '80+ Artisans' },
-  { id: 'cat-5', name: 'Terracotta Art', icon: 'flame.fill', count: '65+ Artisans' },
-  { id: 'cat-6', name: 'Jewelry & Beads', icon: 'star.fill', count: '180+ Artisans' },
-];
 
-export const MOCK_ARTISANS = [
-  {
-    id: 'art-1',
-    name: 'Ramprasad Kumbhar',
-    craft: 'Terracotta & Clay Pottery',
-    location: 'Khurja, Uttar Pradesh',
-    rating: 4.9,
-    reviewCount: 128,
-    experienceYears: 24,
-    about: 'Master artisan specializing in traditional earthenware, hand-painted terracotta vases, and eco-friendly clay cookware passed down through five generations.',
-    skills: ['Wheel Throwing', 'Hand Engraving', 'Natural Glazing', 'Terracotta Sculpting'],
-    availability: 'Available for Custom Orders',
-    saved: true,
-    profileImage: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=400',
-    heroImage: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 'art-2',
-    name: 'Sunita Devi',
-    craft: 'Banarasi Handloom Weaving',
-    location: 'Varanasi, Uttar Pradesh',
-    rating: 4.8,
-    reviewCount: 94,
-    experienceYears: 18,
-    about: 'Award-winning handloom weaver crafting exquisite pure zari Banarasi sarees, silk dupattas, and traditional brocade fabrics.',
-    skills: ['Kadwa Weaving', 'Real Zari Work', 'Silk Dyeing', 'Custom Motif Design'],
-    availability: '3 Weeks Lead Time',
-    saved: false,
-    profileImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
-    heroImage: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 'art-3',
-    name: 'Jitendra Vishwakarma',
-    craft: 'Brassware & Metal Engraving',
-    location: 'Moradabad, Uttar Pradesh',
-    rating: 4.7,
-    reviewCount: 62,
-    experienceYears: 15,
-    about: 'Artisan dedicated to preserving antique brass engraving, traditional pooja thalis, handcrafted lamps, and architectural metal fittings.',
-    skills: ['Sheet Metal Chasing', 'Brass Polish', 'Etching', 'Casting'],
-    availability: 'Ready Stock & Custom Requests',
-    saved: true,
-    profileImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
-    heroImage: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 'art-4',
-    name: 'Meenakshi Rathore',
-    craft: 'Blue Pottery Crafts',
-    location: 'Jaipur, Rajasthan',
-    rating: 4.9,
-    reviewCount: 145,
-    experienceYears: 20,
-    about: 'Pioneer of contemporary Jaipur blue pottery creating hand-painted ceramic dinnerware, decorative tiles, and floral vases without clay.',
-    skills: ['Quartz Firing', 'Hand Brush Painting', 'Persian Floral Motifs', 'Glaze Formulation'],
-    availability: 'Available',
-    saved: false,
-    profileImage: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400',
-    heroImage: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=800',
-  },
-];
 
-export const MOCK_PRODUCTS = [
-  {
-    id: 'prod-1',
-    artisanId: 'art-1',
-    artisanName: 'Ramprasad Kumbhar',
-    name: 'Hand-Painted Royal Terracotta Vase',
-    price: 1850,
-    category: 'Pottery & Ceramics',
-    rating: 4.9,
-    description: 'An elegant handcrafted terracotta vase featuring intricate traditional motifs painted with organic natural dyes. Fired in earthen kilns for maximum strength.',
-    material: 'Natural Clay & Organic Pigments',
-    dimensions: 'Height: 14 in, Diameter: 8 in',
-    stock: 8,
-    images: [
-      'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80&w=600',
-    ],
-    tags: ['Terracotta', 'Handmade', 'HomeDecor', 'Organic'],
-    saved: true,
-  },
-  {
-    id: 'prod-2',
-    artisanId: 'art-2',
-    artisanName: 'Sunita Devi',
-    name: 'Handwoven Royal Zari Silk Saree',
-    price: 14500,
-    category: 'Handloom & Textiles',
-    rating: 4.8,
-    description: 'Authentic Banarasi Katan silk saree handwoven with silver zari motifs. Takes over 22 days of meticulous loom work by master weavers.',
-    material: 'Pure Katan Silk & Zari Thread',
-    dimensions: '6.5 Meters (Includes Blouse Piece)',
-    stock: 3,
-    images: [
-      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600',
-      'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&q=80&w=600',
-    ],
-    tags: ['Banarasi', 'PureSilk', 'Handloom', 'WeddingWear'],
-    saved: false,
-  },
-  {
-    id: 'prod-3',
-    artisanId: 'art-3',
-    artisanName: 'Jitendra Vishwakarma',
-    name: 'Antique Carved Brass Pooja Thali Set',
-    price: 3200,
-    category: 'Metal & Brassware',
-    rating: 4.7,
-    description: '7-piece brass pooja thali set engraved with traditional peacock and lotus filigree work. Treated with anti-tarnish protective coating.',
-    material: 'Solid Brass',
-    dimensions: 'Thali Diameter: 12 in',
-    stock: 12,
-    images: [
-      'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600',
-    ],
-    tags: ['Brassware', 'PoojaItems', 'Antique', 'MoradabadCraft'],
-    saved: true,
-  },
-  {
-    id: 'prod-4',
-    artisanId: 'art-4',
-    artisanName: 'Meenakshi Rathore',
-    name: 'Jaipur Blue Pottery Floral Bowl',
-    price: 1200,
-    category: 'Blue Pottery Crafts',
-    rating: 4.9,
-    description: 'Vibrant turquoise ceramic centerpiece bowl decorated with hand-drawn Persian floral artwork. Clay-free quartz composition.',
-    material: 'Quartz Powder, Glass & Natural Oxide Colors',
-    dimensions: 'Diameter: 9 in, Depth: 3.5 in',
-    stock: 5,
-    images: [
-      'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&q=80&w=600',
-    ],
-    tags: ['BluePottery', 'JaipurArt', 'Ceramics', 'Tableware'],
-    saved: false,
-  },
-];
 
-export const MOCK_REQUESTS = [
-  {
-    id: 'req-101',
-    title: '50 Custom Engraved Brass Gift Boxes',
-    description: 'Looking for an experienced brassware artisan to craft 50 customized brass keepsake boxes with floral engravings for corporate Diwali gifting.',
-    category: 'Metal & Brassware',
-    quantity: 50,
-    budget: 45000,
-    deliveryLocation: 'New Delhi, Delhi',
-    deadline: '2026-10-15',
-    status: 'Quotes Received',
-    createdAt: '2026-08-28',
-    quotesCount: 3,
-    images: [
-      'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=400',
-    ],
-  },
-  {
-    id: 'req-102',
-    title: 'Terracotta Garden Floor Planters (Set of 10)',
-    description: 'Large weatherproof terracotta garden planters with traditional Jaipur patterns.',
-    category: 'Pottery & Ceramics',
-    quantity: 10,
-    budget: 15000,
-    deliveryLocation: 'Bengaluru, Karnataka',
-    deadline: '2026-09-30',
-    status: 'Active',
-    createdAt: '2026-09-02',
-    quotesCount: 1,
-    images: [
-      'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=400',
-    ],
-  },
-];
 
-export const MOCK_QUOTES = [
-  {
-    id: 'q-1',
-    requestId: 'req-101',
-    artisanId: 'art-3',
-    artisanName: 'Jitendra Vishwakarma',
-    artisanCraft: 'Brassware & Metal Engraving',
-    artisanRating: 4.7,
-    artisanAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
-    price: 42500,
-    deliveryTime: '18 Days',
-    notes: 'Includes custom logo etching inside lid, velvet lining inside, and gift box packaging.',
-    status: 'pending',
-  },
-  {
-    id: 'q-2',
-    requestId: 'req-101',
-    artisanId: 'art-1',
-    artisanName: 'Ramprasad Kumbhar',
-    artisanCraft: 'Terracotta & Metal Crafts',
-    artisanRating: 4.9,
-    artisanAvatar: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=200',
-    price: 44000,
-    deliveryTime: '14 Days',
-    notes: 'Hand-lacquered brass brassware finish with floral motifs. Express delivery guaranteed.',
-    status: 'pending',
-  },
-];
 
-export const MOCK_CONVERSATIONS = [
-  {
-    id: 'conv-1',
-    artisanId: 'art-1',
-    artisanName: 'Ramprasad Kumbhar',
-    artisanAvatar: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=200',
-    artisanCraft: 'Terracotta Pottery',
-    lastMessage: 'Namaste! I can customize the vase height to 16 inches for you.',
-    lastTimestamp: '10:30 AM',
-    unreadCount: 1,
-  },
-  {
-    id: 'conv-2',
-    artisanId: 'art-3',
-    artisanName: 'Jitendra Vishwakarma',
-    artisanAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
-    artisanCraft: 'Brassware Engraving',
-    lastMessage: 'I sent you the quotation details for the 50 brass gift boxes.',
-    lastTimestamp: 'Yesterday',
-    unreadCount: 0,
-  },
-];
 
-export const MOCK_MESSAGES = {
-  'conv-1': [
-    {
-      id: 'm-1',
-      conversationId: 'conv-1',
-      senderId: 'user-1',
-      senderName: 'Buyer',
-      text: 'Namaste Ramprasad ji! Is it possible to order the Royal Terracotta Vase in a larger size?',
-      timestamp: '10:15 AM',
-      isMe: true,
-      read: true,
-    },
-    {
-      id: 'm-2',
-      conversationId: 'conv-1',
-      senderId: 'art-1',
-      senderName: 'Ramprasad Kumbhar',
-      text: 'Namaste! Yes, absolutely! I can customize the vase height to 16 inches for you. It will take 5 extra days for kiln drying.',
-      timestamp: '10:30 AM',
-      isMe: false,
-      read: false,
-    },
-  ],
-  'conv-2': [
-    {
-      id: 'm-3',
-      conversationId: 'conv-2',
-      senderId: 'user-1',
-      senderName: 'Buyer',
-      text: 'Hello Jitendra ji, thanks for submitting the quote for corporate gift boxes.',
-      timestamp: 'Yesterday',
-      isMe: true,
-      read: true,
-    },
-    {
-      id: 'm-4',
-      conversationId: 'conv-2',
-      senderId: 'art-3',
-      senderName: 'Jitendra Vishwakarma',
-      text: 'I sent you the quotation details for the 50 brass gift boxes. Feel free to ask if you need sample pictures!',
-      timestamp: 'Yesterday',
-      isMe: false,
-      read: true,
-    },
-  ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const MOCK_USER = {
+  id: 'artisan_101',
+  name: 'Ramprasad Sharma',
+  mobile: '+91 98765 43210',
+  craftCategory: 'Woodwork & Carving',
+  location: 'Jaipur, Rajasthan',
+  preferredLanguage: 'hi',
+  profilePhoto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80',
+  bio: 'Master wood artisan with 20+ years of expertise in Rajasthani Sheesham wood carving.',
+  experienceYears: 22,
+  completionPercentage: 85
 };
 
-export const MOCK_NOTIFICATIONS = [
-  {
-    id: 'notif-1',
-    type: 'quote',
-    title: 'New Quote Received! 🎁',
-    message: 'Jitendra Vishwakarma submitted a quote of ₹42,500 for your request "50 Custom Engraved Brass Gift Boxes".',
-    timestamp: '2 hours ago',
-    read: false,
-    targetScreen: 'request-detail',
-    targetId: 'req-101',
-  },
-  {
-    id: 'notif-2',
-    type: 'message',
-    title: 'New Message from Ramprasad',
-    message: 'Ramprasad Kumbhar replied: "Namaste! I can customize the vase height to 16 inches for you."',
-    timestamp: '4 hours ago',
-    read: false,
-    targetScreen: 'chat',
-    targetId: 'conv-1',
-  },
-  {
-    id: 'notif-3',
-    type: 'request',
-    title: 'Request Published Successfully',
-    message: 'Your requirement "Terracotta Garden Floor Planters" is now live and visible to artisans.',
-    timestamp: '1 day ago',
-    read: true,
-    targetScreen: 'request-detail',
-    targetId: 'req-102',
-  },
-];
+export const INITIAL_MOCK_PRODUCTS = [
+{
+  id: 'prod_1',
+  title: 'Hand-Carved Sheesham Wood Elephant Jali Statue',
+  description: 'Intricately carved elephant figurine featuring traditional inner jali carving, handcrafted from single block seasoned Sheesham wood.',
+  category: 'Woodwork & Carving',
+  subcategory: 'Figurines',
+  materials: ['Sheesham Wood', 'Natural Honey Polish'],
+  technique: 'Traditional Hand Jali Carving',
+  dimensions: '8 x 4 x 6 inches',
+  weight: '650 grams',
+  location: 'Jaipur, Rajasthan',
+  tags: ['handcrafted', 'woodcarving', 'rajasthan', 'sheesham', 'jali'],
+  language: 'hi',
+  images: [
+  'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&auto=format&fit=crop&q=80'],
+
+  rawMaterialCost: 450,
+  laborCost: 1200,
+  packagingCost: 150,
+  suggestedPrice: 2499,
+  sellingPrice: 2200,
+  inventory: 12,
+  status: 'Published',
+  views: 342,
+  inquiries: 18,
+  createdAt: '2026-08-20T10:00:00Z',
+  updatedAt: '2026-09-01T14:30:00Z'
+},
+{
+  id: 'prod_2',
+  title: 'Terracotta Handpainted Matka Pot with Ethnic Motif',
+  description: 'Eco-friendly natural clay terracotta pitcher hand-painted with eco-pigments in Warli folk art style.',
+  category: 'Pottery & Terracotta',
+  subcategory: 'Home Decor',
+  materials: ['Natural Clay', 'Organic Water Pigments'],
+  technique: 'Wheel Thrown & Hand Painted',
+  dimensions: '12 x 10 x 10 inches',
+  weight: '1.4 kg',
+  location: 'Jaipur, Rajasthan',
+  tags: ['terracotta', 'pottery', 'warli', 'clay', 'decor'],
+  language: 'hi',
+  images: [
+  'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&auto=format&fit=crop&q=80'],
+
+  rawMaterialCost: 200,
+  laborCost: 600,
+  packagingCost: 100,
+  suggestedPrice: 1299,
+  sellingPrice: 1150,
+  inventory: 8,
+  status: 'Published',
+  views: 189,
+  inquiries: 9,
+  createdAt: '2026-08-25T11:20:00Z',
+  updatedAt: '2026-09-02T09:15:00Z'
+},
+{
+  id: 'prod_3',
+  title: 'Pure Block Printed Chanderi Cotton Dupatta',
+  description: 'Soft breathable Chanderi cotton Dupatta crafted with natural vegetable dyes using traditional wooden block printing technique.',
+  category: 'Handloom & Textiles',
+  subcategory: 'Apparel',
+  materials: ['Chanderi Cotton', 'Natural Indigo Dye'],
+  technique: 'Wooden Block Printing',
+  dimensions: '2.5 meters length',
+  weight: '210 grams',
+  location: 'Sanganer, Rajasthan',
+  tags: ['handloom', 'chanderi', 'blockprint', 'indigo', 'dupatta'],
+  language: 'hi',
+  images: [
+  'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=800&auto=format&fit=crop&q=80'],
+
+  rawMaterialCost: 350,
+  laborCost: 800,
+  packagingCost: 80,
+  suggestedPrice: 1799,
+  sellingPrice: 1650,
+  inventory: 20,
+  status: 'Draft',
+  views: 45,
+  inquiries: 2,
+  createdAt: '2026-09-03T16:00:00Z',
+  updatedAt: '2026-09-04T12:00:00Z'
+},
+{
+  id: 'prod_4',
+  title: 'Antique Brass Dhokra Tribal Dancing Figurine',
+  description: 'Lost-wax cast Dhokra metal craft statue capturing traditional tribal dance form, made by master metal smiths.',
+  category: 'Brass & Metal Craft',
+  subcategory: 'Metal Statues',
+  materials: ['Brass Alloy', 'Wax Mold'],
+  technique: 'Lost-Wax Casting (Dhokra)',
+  dimensions: '10 x 3 x 4 inches',
+  weight: '850 grams',
+  location: 'Bastar, Chattisgarh',
+  tags: ['dhokra', 'brass', 'tribal', 'metalcraft', 'handcrafted'],
+  language: 'hi',
+  images: [
+  'https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&auto=format&fit=crop&q=80'],
+
+  rawMaterialCost: 700,
+  laborCost: 1500,
+  packagingCost: 150,
+  suggestedPrice: 3200,
+  sellingPrice: 2950,
+  inventory: 5,
+  status: 'Pending',
+  views: 78,
+  inquiries: 4,
+  createdAt: '2026-09-04T08:30:00Z',
+  updatedAt: '2026-09-04T08:30:00Z'
+}];
+
+
+export const INITIAL_MOCK_NOTIFICATIONS = [
+{
+  id: 'notif_1',
+  type: 'product_published',
+  title: 'Product Published Successfully 🎉',
+  description: 'Your craft "Hand-Carved Sheesham Wood Elephant" is now live on the ShilpSetu Marketplace.',
+  timestamp: '2 hours ago',
+  isRead: false,
+  relatedEntityId: 'prod_1'
+},
+{
+  id: 'notif_2',
+  type: 'new_inquiry',
+  title: 'New Buyer Inquiry Received 💬',
+  description: 'A buyer from Mumbai sent an inquiry for bulk order of 10 Terracotta Pots.',
+  timestamp: '5 hours ago',
+  isRead: false,
+  relatedEntityId: 'prod_2'
+},
+{
+  id: 'notif_3',
+  type: 'ai_completed',
+  title: 'AI Catalog Description Generated ✨',
+  description: 'Your voice recording was successfully converted into an optimized product catalog listing.',
+  timestamp: '1 day ago',
+  isRead: true,
+  relatedEntityId: 'prod_3'
+},
+{
+  id: 'notif_4',
+  type: 'account',
+  title: 'Profile 85% Complete',
+  description: 'Add your craft workshop location details to achieve 100% verified artisan badge.',
+  timestamp: '3 days ago',
+  isRead: true
+}];
