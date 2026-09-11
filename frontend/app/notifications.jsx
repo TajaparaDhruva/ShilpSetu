@@ -55,7 +55,7 @@ export default function NotificationsScreen() {
             title="No Notifications"
             description="You are all caught up! New quotes, messages, and updates will appear here."
             actionLabel="Discover Crafts"
-            onAction={() => router.push('/(tabs)/index')}
+            onAction={() => router.push('/(tabs)')}
           />
         )}
       </ScrollView>

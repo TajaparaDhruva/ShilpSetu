@@ -11,10 +11,25 @@ import {
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { AppHeader } from '../../components/ui/AppHeader';
-import { CATEGORIES } from '../../constants/mockData';
+import { CATEGORIES as IMPORTED_CATEGORIES } from '../../constants/mockData';
 import { ShilpColors, Typography, Spacing, BorderRadius } from '../../constants/theme';
 import { useApp } from '../../context/AppContext';
 import { IconSymbol } from '../../components/ui/icon-symbol';
+
+const DEFAULT_CATEGORIES = [
+  { id: '1', name: 'Pottery', label: 'Pottery', icon: 'cube.box.fill' },
+  { id: '2', name: 'Wood Craft', label: 'Wood Craft', icon: 'hammer.fill' },
+  { id: '3', name: 'Textiles', label: 'Textiles', icon: 'sparkles' },
+  { id: '4', name: 'Metal Craft', label: 'Metal Craft', icon: 'flame.fill' },
+  { id: '5', name: 'Paintings', label: 'Paintings', icon: 'sparkles' },
+  { id: '6', name: 'Jewelry', label: 'Jewelry', icon: 'sparkles' },
+  { id: '7', name: 'Leather', label: 'Leather', icon: 'cube.box.fill' },
+  { id: '8', name: 'Home Decor', label: 'Home Decor', icon: 'flame.fill' },
+];
+
+const CATEGORIES = (Array.isArray(IMPORTED_CATEGORIES) && IMPORTED_CATEGORIES.length > 0)
+  ? IMPORTED_CATEGORIES
+  : DEFAULT_CATEGORIES;
 
 export default function RFQCreationScreen() {
   const params = useLocalSearchParams();
@@ -22,7 +37,7 @@ export default function RFQCreationScreen() {
   const { createRequest } = useApp();
 
   const [title, setTitle] = useState(params.title || '');
-  const [category, setCategory] = useState(params.category || CATEGORIES[0].name);
+  const [category, setCategory] = useState(params.category || (CATEGORIES && CATEGORIES[0]?.name) || 'Pottery');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState('10');
   const [budget, setBudget] = useState('15000');

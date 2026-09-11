@@ -138,10 +138,10 @@ export default function ProductDetailsScreen() {
 
         _jsxs(View, { style: styles.priceRow, children: [/*#__PURE__*/
           _jsxs(Text, { style: [Typography.display, { color: theme.primary }], children: ["\u20B9",
-            product.sellingPrice.toLocaleString('en-IN')] }
+            Number(product.sellingPrice ?? product.price ?? 0).toLocaleString('en-IN')] }
           ), /*#__PURE__*/
           _jsxs(Text, { style: [Typography.bodySmall, { color: theme.textMuted, marginLeft: Spacing.md }], children: ["AI Suggested: \u20B9",
-            product.suggestedPrice.toLocaleString('en-IN')] }
+            Number(product.suggestedPrice ?? 0).toLocaleString('en-IN')] }
           )] }
         ), /*#__PURE__*/
 

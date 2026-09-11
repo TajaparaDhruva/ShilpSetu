@@ -1,20 +1,8 @@
 import React from 'react';
 import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing, Shadows } from '@/constants/theme';
+import { Colors, ShilpColors, Typography, BorderRadius, Spacing, Shadows } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Button } from './Button';import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-
-
-
-
-
-
-
-
-
-
-
-
+import { Button } from './Button';
 
 export const ConfirmDialog = ({
   visible,
@@ -25,55 +13,63 @@ export const ConfirmDialog = ({
   isDanger = false,
   loading = false,
   onConfirm,
-  onCancel
+  onCancel,
 }) => {
   const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme ?? 'light'];
+  const theme = Colors?.[colorScheme ?? 'light'] || Colors?.light || {};
+  const shadowStyle = Shadows?.lg || {};
 
-  return (/*#__PURE__*/
-    _jsx(Modal, { visible: visible, transparent: true, animationType: "fade", onRequestClose: onCancel, children: /*#__PURE__*/
-      _jsx(TouchableWithoutFeedback, { onPress: onCancel, children: /*#__PURE__*/
-        _jsx(View, { style: styles.overlay, children: /*#__PURE__*/
-          _jsx(TouchableWithoutFeedback, { children: /*#__PURE__*/
-            _jsxs(View, {
-              style: [
-              styles.dialog,
-              { backgroundColor: theme.cardBg, borderColor: theme.border },
-              Shadows.lg], children: [/*#__PURE__*/
+  return (
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onCancel}>
+      <TouchableWithoutFeedback onPress={onCancel}>
+        <View style={styles.overlay}>
+          <TouchableWithoutFeedback>
+            <View
+              style={[
+                styles.dialog,
+                {
+                  backgroundColor: theme.cardBg || ShilpColors.surfaceCard || '#FFFFFF',
+                  borderColor: theme.border || ShilpColors.borderLight || '#F0DEC9',
+                },
+                shadowStyle,
+              ]}>
+              <Text style={[Typography.heading2, { color: theme.text || ShilpColors.textPrimary }]}>
+                {title}
+              </Text>
+              <Text
+                style={[
+                  Typography.body,
+                  {
+                    color: theme.textSecondary || ShilpColors.textSecondary,
+                    marginTop: Spacing.sm,
+                    marginBottom: Spacing.lg,
+                  },
+                ]}>
+                {message}
+              </Text>
 
-
-              _jsx(Text, { style: [Typography.h2, { color: theme.text }], children: title }), /*#__PURE__*/
-              _jsx(Text, {
-                style: [
-                Typography.body,
-                { color: theme.textSecondary, marginTop: Spacing.sm, marginBottom: Spacing.lg }], children:
-
-
-                message }
-              ), /*#__PURE__*/
-
-              _jsxs(View, { style: styles.buttonRow, children: [/*#__PURE__*/
-                _jsx(Button, {
-                  title: cancelText,
-                  variant: "ghost",
-                  onPress: onCancel,
-                  disabled: loading,
-                  style: styles.flexBtn }
-                ), /*#__PURE__*/
-                _jsx(Button, {
-                  title: confirmText,
-                  variant: isDanger ? 'danger' : 'primary',
-                  onPress: onConfirm,
-                  loading: loading,
-                  style: styles.flexBtn }
-                )] }
-              )] }
-            ) }
-          ) }
-        ) }
-      ) }
-    ));
-
+              <View style={styles.buttonRow}>
+                <Button
+                  title={cancelText}
+                  variant="ghost"
+                  onPress={onCancel}
+                  disabled={loading}
+                  style={styles.flexBtn}
+                />
+                <Button
+                  title={confirmText}
+                  variant={isDanger ? 'danger' : 'primary'}
+                  onPress={onConfirm}
+                  loading={loading}
+                  style={styles.flexBtn}
+                />
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+      </TouchableWithoutFeedback>
+    </Modal>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -82,20 +78,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: Spacing.lg
+    padding: Spacing.lg,
   },
   dialog: {
     width: '100%',
-    borderRadius: BorderRadius.lg,
+    borderRadius: BorderRadius.large || 16,
     padding: Spacing.lg,
-    borderWidth: 1
+    borderWidth: 1,
   },
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    gap: Spacing.sm
+    gap: Spacing.sm,
   },
   flexBtn: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
+
+export default ConfirmDialog;

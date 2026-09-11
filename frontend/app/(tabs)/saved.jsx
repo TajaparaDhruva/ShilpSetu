@@ -17,11 +17,13 @@ import { useApp } from '../../context/AppContext';
 
 export default function SavedArtisansScreen() {
   const router = useRouter();
-  const { artisans, products } = useApp();
+  const appContext = useApp() || {};
+  const artisans = Array.isArray(appContext.artisans) ? appContext.artisans : [];
+  const products = Array.isArray(appContext.products) ? appContext.products : [];
   const [activeTab, setActiveTab] = useState('artisans');
 
-  const savedArtisans = artisans.filter((a) => a.saved);
-  const savedProducts = products.filter((p) => p.saved);
+  const savedArtisans = artisans.filter((a) => a && (a.saved || a.isSaved));
+  const savedProducts = products.filter((p) => p && (p.saved || p.isSaved));
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -57,7 +59,7 @@ export default function SavedArtisansScreen() {
               title="No Saved Artisans"
               description="Tap the heart icon on any artisan profile to save them for quick access."
               actionLabel="Discover Artisans"
-              onAction={() => router.push('/(tabs)/index')}
+              onAction={() => router.push('/(tabs)')}
             />
           )
         ) : savedProducts.length > 0 ? (
@@ -74,7 +76,7 @@ export default function SavedArtisansScreen() {
             title="No Saved Products"
             description="Tap the heart icon on any craft product to save it to your collection."
             actionLabel="Browse Products"
-            onAction={() => router.push('/(tabs)/index')}
+            onAction={() => router.push('/(tabs)')}
           />
         )}
       </ScrollView>

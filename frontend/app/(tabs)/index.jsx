@@ -13,24 +13,42 @@ import { SearchBar } from '../../components/ui/SearchBar';
 import { CategoryChip } from '../../components/ui/CategoryChip';
 import { ArtisanCard } from '../../components/ui/ArtisanCard';
 import { ProductCard } from '../../components/ui/ProductCard';
-import { CATEGORIES } from '../../constants/mockData';
+import { CATEGORIES as IMPORTED_CATEGORIES } from '../../constants/mockData';
 import { ShilpColors, Typography, Spacing, BorderRadius } from '../../constants/theme';
 import { useApp } from '../../context/AppContext';
 import { IconSymbol } from '../../components/ui/icon-symbol';
 
+const DEFAULT_CATEGORIES = [
+  { id: '1', name: 'Pottery', label: 'Pottery', icon: 'cube.box.fill' },
+  { id: '2', name: 'Wood Craft', label: 'Wood Craft', icon: 'hammer.fill' },
+  { id: '3', name: 'Textiles', label: 'Textiles', icon: 'sparkles' },
+  { id: '4', name: 'Metal Craft', label: 'Metal Craft', icon: 'flame.fill' },
+  { id: '5', name: 'Paintings', label: 'Paintings', icon: 'sparkles' },
+  { id: '6', name: 'Jewelry', label: 'Jewelry', icon: 'sparkles' },
+  { id: '7', name: 'Leather', label: 'Leather', icon: 'cube.box.fill' },
+  { id: '8', name: 'Home Decor', label: 'Home Decor', icon: 'flame.fill' },
+];
+
+const CATEGORIES = (Array.isArray(IMPORTED_CATEGORIES) && IMPORTED_CATEGORIES.length > 0)
+  ? IMPORTED_CATEGORIES
+  : DEFAULT_CATEGORIES;
+
 export default function DiscoverScreen() {
   const router = useRouter();
-  const { artisans, products } = useApp();
+  const appContext = useApp() || {};
+  const artisans = Array.isArray(appContext.artisans) ? appContext.artisans : [];
+  const products = Array.isArray(appContext.products) ? appContext.products : [];
   const [selectedCat, setSelectedCat] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredProducts = products.filter((p) => {
+    if (!p) return false;
     const matchesCat = selectedCat === 'All' || p.category === selectedCat;
     const matchesSearch =
       !searchQuery ||
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.artisanName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+      (p.name && p.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (p.artisanName && p.artisanName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (p.category && p.category.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCat && matchesSearch;
   });
 
@@ -79,7 +97,7 @@ export default function DiscoverScreen() {
               onPress={() => setSelectedCat('All')}
               iconName="sparkles"
             />
-            {CATEGORIES.map((cat) => (
+            {(CATEGORIES || []).map((cat) => (
               <CategoryChip
                 key={cat.id}
                 label={cat.name}

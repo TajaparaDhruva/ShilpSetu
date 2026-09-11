@@ -1,28 +1,20 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Tabs } from 'expo-router';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useLanguage } from '@/store/LanguageContext';
-import { notificationService } from '@/services/notifications/notificationService';import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { ShilpColors, Typography } from '../../constants/theme';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 
 export default function SellerTabsLayout() {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme ?? 'light'];
-  const { t } = useLanguage();
-
-  const unreadCount = notificationService.getUnreadCount();
-
   return (/*#__PURE__*/
     _jsxs(Tabs, {
       screenOptions: {
         headerShown: false,
-        tabBarActiveTintColor: theme.tabIconSelected,
-        tabBarInactiveTintColor: theme.tabIconDefault,
+        tabBarActiveTintColor: ShilpColors.primary,
+        tabBarInactiveTintColor: ShilpColors.textMuted,
         tabBarStyle: {
-          backgroundColor: theme.surfaceElevated,
-          borderTopColor: theme.border,
-          height: 62,
+          backgroundColor: ShilpColors.surface,
+          borderTopColor: ShilpColors.borderLight,
+          height: 64,
           paddingBottom: 8,
           paddingTop: 6
         },
@@ -50,7 +42,6 @@ export default function SellerTabsLayout() {
         name: "notifications",
         options: {
           title: 'Notifications',
-          tabBarBadge: unreadCount > 0 ? unreadCount : undefined,
           tabBarIcon: ({ color }) => /*#__PURE__*/_jsx(Text, { style: { fontSize: 20, color }, children: "\uD83D\uDD14" })
         } }
       ), /*#__PURE__*/

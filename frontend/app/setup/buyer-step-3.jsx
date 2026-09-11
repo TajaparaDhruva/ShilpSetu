@@ -38,7 +38,7 @@ export default function BuyerStep3Screen() {
 
   const handleComplete = () => {
     updateBuyerProfile({ interests: selectedInterests });
-    router.replace('/(artisan-tabs)/home');
+    router.replace('/(tabs)');
   };
 
   const isVal = selectedInterests.length >= 3;

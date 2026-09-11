@@ -58,7 +58,7 @@ export default function ChatListScreen() {
             title="No Conversations Yet"
             description="Start exploring artisans or products to message them directly."
             actionLabel="Discover Artisans"
-            onAction={() => router.push('/(tabs)/index')}
+            onAction={() => router.push('/(tabs)')}
           />
         )}
       </ScrollView>

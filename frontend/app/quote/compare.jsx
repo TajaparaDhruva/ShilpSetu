@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   rankText: {
     ...Typography.caption,
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '700',
     color: ShilpColors.white,
   },

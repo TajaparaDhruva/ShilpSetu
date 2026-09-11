@@ -110,7 +110,7 @@ export default function ProductDetailScreen() {
           </View>
 
           <Text style={styles.productTitle}>{product.name}</Text>
-          <Text style={styles.productPrice}>₹{product.price.toLocaleString('en-IN')}</Text>
+          <Text style={styles.productPrice}>₹{Number(product.price ?? product.sellingPrice ?? 0).toLocaleString('en-IN')}</Text>
 
           {artisan && (
             <Pressable

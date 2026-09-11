@@ -1,64 +1,73 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Settings, HelpCircle, LogOut, User, BarChart3, MessageSquare, Wallet } from 'lucide-react-native';
+import { Settings, HelpCircle, LogOut, User, BarChart3, MessageSquare, Wallet, Package, Briefcase } from 'lucide-react-native';
 import colors from '../../theme/colors';
 import typography from '../../theme/typography';
 import Logo from '../../components/Logo';
 import OutlineButton from '../../components/OutlineButton';
-import { useApp } from '../../context/AppContext';import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useApp } from '../../context/AppContext';
 
 export default function MoreScreen() {
   const router = useRouter();
   const { artisanProfile, setRole } = useApp();
 
   const options = [
-  { label: 'Artisan Profile', icon: User },
-  { label: 'Analytics & Sales', icon: BarChart3 },
-  { label: 'Messages', icon: MessageSquare },
-  { label: 'Earnings & Payouts', icon: Wallet },
-  { label: 'Settings', icon: Settings },
-  { label: 'Help & Support', icon: HelpCircle }];
+    { label: 'Artisan Capability Profile', icon: User, route: '/artisan/capability-profile' },
+    { label: 'Product Catalog Library', icon: Package, route: '/artisan/product-library' },
+    { label: 'Buyer Opportunities & RFQs', icon: Briefcase, route: '/artisan/buyer-opportunities' },
+    { label: 'Business & Storefront Page', icon: BarChart3, route: '/artisan/business-page' },
+    { label: 'Messages & Inquiries', icon: MessageSquare, route: '/chat' },
+    { label: 'Settings', icon: Settings, route: '/(seller)/settings' },
+  ];
 
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Logo size="sm" showSubtitle={false} />
+        <Text style={styles.title}>More</Text>
+        <View style={{ width: 36 }} />
+      </View>
 
-  return (/*#__PURE__*/
-    _jsxs(View, { style: styles.container, children: [/*#__PURE__*/
-      _jsxs(View, { style: styles.header, children: [/*#__PURE__*/
-        _jsx(Logo, { size: "sm", showSubtitle: false }), /*#__PURE__*/
-        _jsx(Text, { style: styles.title, children: "More" }), /*#__PURE__*/
-        _jsx(View, { style: { width: 36 } })] }
-      ), /*#__PURE__*/
+      <ScrollView contentContainerStyle={styles.content}>
+        <TouchableOpacity
+          style={styles.profileHeader}
+          onPress={() => router.push('/artisan/capability-profile')}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.name}>{artisanProfile.fullName || 'Meera Patel'}</Text>
+          <Text style={styles.role}>Artisan Seller • {artisanProfile.location}</Text>
+        </TouchableOpacity>
 
-      _jsxs(ScrollView, { contentContainerStyle: styles.content, children: [/*#__PURE__*/
-        _jsxs(View, { style: styles.profileHeader, children: [/*#__PURE__*/
-          _jsx(Text, { style: styles.name, children: artisanProfile.fullName || 'Meera Patel' }), /*#__PURE__*/
-          _jsxs(Text, { style: styles.role, children: ["Artisan Seller \u2022 ", artisanProfile.location] })] }
-        ), /*#__PURE__*/
-
-        _jsx(View, { style: styles.menu, children:
-          options.map((opt) => {
+        <View style={styles.menu}>
+          {options.map((opt) => {
             const IconComp = opt.icon;
-            return (/*#__PURE__*/
-              _jsxs(TouchableOpacity, { style: styles.menuItem, children: [/*#__PURE__*/
-                _jsx(IconComp, { size: 20, color: colors.primary }), /*#__PURE__*/
-                _jsx(Text, { style: styles.menuLabel, children: opt.label })] }, opt.label
-              ));
+            return (
+              <TouchableOpacity
+                key={opt.label}
+                style={styles.menuItem}
+                onPress={() => opt.route && router.push(opt.route)}
+                activeOpacity={0.7}
+              >
+                <IconComp size={20} color={colors.primary} />
+                <Text style={styles.menuLabel}>{opt.label}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
 
-          }) }
-        ), /*#__PURE__*/
-
-        _jsx(OutlineButton, {
-          label: "Switch Role / Logout",
-          icon: /*#__PURE__*/_jsx(LogOut, { size: 18, color: colors.primary }),
-          onPress: () => {
+        <OutlineButton
+          label="Switch Role / Logout"
+          icon={<LogOut size={18} color={colors.primary} />}
+          onPress={() => {
             setRole(null);
             router.replace('/auth/role-select');
-          },
-          style: { marginTop: 24 } }
-        )] }
-      )] }
-    ));
-
+          }}
+          style={{ marginTop: 24 }}
+        />
+      </ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

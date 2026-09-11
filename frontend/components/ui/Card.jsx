@@ -1,48 +1,41 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Colors, BorderRadius, Shadows, Spacing } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';import { jsx as _jsx } from "react/jsx-runtime";
-
-
-
-
-
-
-
-
+import { Colors, ShilpColors, BorderRadius, Shadows, Spacing } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export const Card = ({
   children,
   style,
   onPress,
   elevation = 'sm',
-  bordered = true
+  bordered = true,
 }) => {
   const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme ?? 'light'];
+  const theme = Colors?.[colorScheme ?? 'light'] || Colors?.light || {};
 
-  const shadowStyle = Shadows[elevation];
+  const shadowStyle = (Shadows && typeof Shadows === 'object' && Shadows[elevation]) || {};
 
   const containerStyle = {
-    backgroundColor: theme.cardBg,
-    borderRadius: BorderRadius.lg,
-    padding: Spacing.md,
+    backgroundColor: theme.cardBg || ShilpColors.surfaceCard || '#FFFFFF',
+    borderRadius: BorderRadius?.lg || BorderRadius?.large || 16,
+    padding: Spacing?.md || 12,
     borderWidth: bordered ? 1 : 0,
-    borderColor: theme.border,
-    ...shadowStyle
+    borderColor: theme.border || ShilpColors.borderLight || '#F0DEC9',
+    ...shadowStyle,
   };
 
   if (onPress) {
-    return (/*#__PURE__*/
-      _jsx(TouchableOpacity, {
-        activeOpacity: 0.85,
-        onPress: onPress,
-        style: [containerStyle, style], children:
-
-        children }
-      ));
-
+    return (
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={onPress}
+        style={[containerStyle, style]}>
+        {children}
+      </TouchableOpacity>
+    );
   }
 
-  return /*#__PURE__*/_jsx(View, { style: [containerStyle, style], children: children });
+  return <View style={[containerStyle, style]}>{children}</View>;
 };
+
+export default Card;

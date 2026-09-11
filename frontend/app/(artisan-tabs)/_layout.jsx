@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   fabLabel: {
     fontFamily: typography.fonts.bodyMedium,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.primary,
     marginTop: 2,
     fontWeight: '600'

@@ -19,10 +19,12 @@ const STATUS_FILTERS = ['All', 'Active', 'Quotes Received', 'Accepted', 'Complet
 
 export default function BuyerRequestsScreen() {
   const router = useRouter();
-  const { requests } = useApp();
+  const appContext = useApp() || {};
+  const requests = Array.isArray(appContext.requests) ? appContext.requests : [];
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filteredRequests = requests.filter((r) => {
+    if (!r) return false;
     if (activeFilter === 'All') return true;
     return r.status === activeFilter;
   });

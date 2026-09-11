@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     color: ShilpColors.white,
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '700',
   },
 });

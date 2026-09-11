@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   speechText: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textDark,
     textAlign: 'center'
   },
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   roleSub: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textMuted,
     textAlign: 'center',
     marginTop: 2
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     marginBottom: 6
   },
   aiBadgeText: {
-    fontSize: 8,
+    fontSize: 11,
     color: colors.white,
     fontWeight: 'bold'
   },
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
   },
   matchSub: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 9,
+    fontSize: 11,
     color: colors.textMuted,
     textAlign: 'center',
     marginTop: 2

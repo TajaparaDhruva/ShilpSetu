@@ -435,7 +435,7 @@ const styles = StyleSheet.create({
   wordmarkSub: {
     marginTop: -1,
     fontFamily: typography.fonts.serifSemiBold,
-    fontSize: 8.5,
+    fontSize: 11.5,
     letterSpacing: 0.2,
     color: colors.textDark,
     fontStyle: 'italic'
@@ -769,7 +769,7 @@ const styles = StyleSheet.create({
   phoneDesc: {
     marginTop: 6,
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 8.5,
+    fontSize: 11.5,
     lineHeight: 11,
     color: colors.textBody
   },
@@ -788,7 +788,7 @@ const styles = StyleSheet.create({
   },
   phoneTagText: {
     fontFamily: typography.fonts.bodyMedium,
-    fontSize: 8.2,
+    fontSize: 11.2,
     color: colors.textDark,
     fontWeight: '500',
     letterSpacing: 0.1
@@ -803,7 +803,7 @@ const styles = StyleSheet.create({
   },
   phoneCtaText: {
     fontFamily: typography.fonts.bodySemiBold,
-    fontSize: 10.5,
+    fontSize: 12.5,
     color: colors.white,
     fontWeight: '600',
     letterSpacing: 0.2

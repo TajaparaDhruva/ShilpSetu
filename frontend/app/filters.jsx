@@ -9,10 +9,25 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { AppHeader } from '../components/ui/AppHeader';
-import { CATEGORIES } from '../constants/mockData';
+import { CATEGORIES as IMPORTED_CATEGORIES } from '../constants/mockData';
 import { ShilpColors, Typography, Spacing, BorderRadius } from '../constants/theme';
 import { useApp } from '../context/AppContext';
 import { IconSymbol } from '../components/ui/icon-symbol';
+
+const DEFAULT_CATEGORIES = [
+  { id: '1', name: 'Pottery', label: 'Pottery', icon: 'cube.box.fill' },
+  { id: '2', name: 'Wood Craft', label: 'Wood Craft', icon: 'hammer.fill' },
+  { id: '3', name: 'Textiles', label: 'Textiles', icon: 'sparkles' },
+  { id: '4', name: 'Metal Craft', label: 'Metal Craft', icon: 'flame.fill' },
+  { id: '5', name: 'Paintings', label: 'Paintings', icon: 'sparkles' },
+  { id: '6', name: 'Jewelry', label: 'Jewelry', icon: 'sparkles' },
+  { id: '7', name: 'Leather', label: 'Leather', icon: 'cube.box.fill' },
+  { id: '8', name: 'Home Decor', label: 'Home Decor', icon: 'flame.fill' },
+];
+
+const CATEGORIES = (Array.isArray(IMPORTED_CATEGORIES) && IMPORTED_CATEGORIES.length > 0)
+  ? IMPORTED_CATEGORIES
+  : DEFAULT_CATEGORIES;
 
 const LOCATIONS = ['All India', 'Uttar Pradesh', 'Rajasthan', 'Karnataka', 'Delhi'];
 const RATINGS = [0, 4.0, 4.5, 4.8];
@@ -75,7 +90,7 @@ export default function FiltersModalScreen() {
 
         <View style={styles.filterSection}>
           <Text style={styles.sectionTitle}>Max Price Budget</Text>
-          <Text style={styles.selectedVal}>Up to ₹{maxPrice.toLocaleString('en-IN')}</Text>
+          <Text style={styles.selectedVal}>Up to ₹{Number(maxPrice || 0).toLocaleString('en-IN')}</Text>
           <View style={styles.pillWrap}>
             {PRICE_PRESETS.map((price) => (
               <Pressable
@@ -83,7 +98,7 @@ export default function FiltersModalScreen() {
                 style={[styles.pill, maxPrice === price && styles.activePill]}
                 onPress={() => setMaxPrice(price)}>
                 <Text style={[styles.pillText, maxPrice === price && styles.activePillText]}>
-                  Under ₹{price.toLocaleString('en-IN')}
+                  Under ₹{Number(price || 0).toLocaleString('en-IN')}
                 </Text>
               </Pressable>
             ))}

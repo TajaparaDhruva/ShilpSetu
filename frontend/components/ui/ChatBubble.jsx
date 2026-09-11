@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     ...Typography.caption,
-    fontSize: 10,
+    fontSize: 12,
     marginTop: 4,
     alignSelf: 'flex-end',
   },

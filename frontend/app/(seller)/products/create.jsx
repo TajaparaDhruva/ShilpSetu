@@ -116,13 +116,13 @@ export default function CreateProductScreen() {
         _jsx(Text, { style: [Typography.h1, { color: theme.text, marginTop: Spacing.lg }], children: "Price your work fairly" }), /*#__PURE__*/
         _jsxs(Card, { style: [styles.priceCard, { backgroundColor: Palette.terracottaMuted }], children: [/*#__PURE__*/
           _jsx(Text, { style: [Typography.caption, { color: theme.primary, fontWeight: '700' }], children: "AI RECOMMENDED PRICE" }), /*#__PURE__*/
-          _jsxs(Text, { style: [Typography.display, { color: theme.primary, marginTop: Spacing.xs }], children: ["\u20B9", (recommendedPrice || totalCost).toLocaleString('en-IN')] }), /*#__PURE__*/
+          _jsxs(Text, { style: [Typography.display, { color: theme.primary, marginTop: Spacing.xs }], children: ["\u20B9", Number(recommendedPrice || totalCost || 0).toLocaleString('en-IN')] }), /*#__PURE__*/
           _jsx(Text, { style: [Typography.bodySmall, { color: theme.textSecondary, marginTop: Spacing.xs }], children: "A sustainable price based on material, labour and packing costs." })] }
         ), /*#__PURE__*/
         _jsx(Input, { label: "Raw material cost (\u20B9)", value: rawMaterialCost, onChangeText: setRawMaterialCost, keyboardType: "numeric" }), /*#__PURE__*/
         _jsx(Input, { label: "Your labour cost (\u20B9)", value: laborCost, onChangeText: setLaborCost, keyboardType: "numeric" }), /*#__PURE__*/
         _jsx(Input, { label: "Packaging cost (\u20B9)", value: packagingCost, onChangeText: setPackagingCost, keyboardType: "numeric" }), /*#__PURE__*/
-        _jsxs(View, { style: styles.totalRow, children: [/*#__PURE__*/_jsx(Text, { style: [Typography.label, { color: theme.text }], children: "Total craft cost" }), /*#__PURE__*/_jsxs(Text, { style: [Typography.h3, { color: theme.text }], children: ["\u20B9", totalCost.toLocaleString('en-IN')] })] }), /*#__PURE__*/
+        _jsxs(View, { style: styles.totalRow, children: [/*#__PURE__*/_jsx(Text, { style: [Typography.label, { color: theme.text }], children: "Total craft cost" }), /*#__PURE__*/_jsxs(Text, { style: [Typography.h3, { color: theme.text }], children: ["\u20B9", Number(totalCost || 0).toLocaleString('en-IN')] })] }), /*#__PURE__*/
         _jsx(Button, { title: "Publish to marketplace", size: "lg", onPress: publish, loading: isPublishing, style: styles.bottomButton }), /*#__PURE__*/
         _jsx(TouchableOpacity, { onPress: () => setStep(2), style: styles.backLink, children: /*#__PURE__*/_jsx(Text, { style: [Typography.label, { color: theme.primary }], children: "Back to catalog details" }) })] }
       )] }

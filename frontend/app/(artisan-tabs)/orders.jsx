@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
   id: { fontFamily: typography.fonts.bodySemiBold, fontSize: 13, color: colors.textDark },
   product: { fontFamily: typography.fonts.bodyRegular, fontSize: 12, color: colors.textBody },
   customer: { fontFamily: typography.fonts.bodyRegular, fontSize: 11, color: colors.textMuted },
-  date: { fontFamily: typography.fonts.bodyRegular, fontSize: 10, color: colors.textMuted, marginTop: 2 },
+  date: { fontFamily: typography.fonts.bodyRegular, fontSize: 12, color: colors.textMuted, marginTop: 2 },
   amount: { fontFamily: typography.fonts.serifBold, fontSize: 14, color: colors.primary }
 });

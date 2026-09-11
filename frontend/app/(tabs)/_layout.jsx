@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { HapticTab } from '../../components/haptic-tab';
 import { IconSymbol } from '../../components/ui/icon-symbol';
 import { ShilpColors, Typography } from '../../constants/theme';
 
@@ -12,7 +11,6 @@ export default function TabLayout() {
         tabBarActiveTintColor: ShilpColors.primary,
         tabBarInactiveTintColor: ShilpColors.textMuted,
         headerShown: false,
-        tabBarButton: HapticTab,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.tabLabel,
       }}>
@@ -60,9 +58,9 @@ const styles = StyleSheet.create({
     backgroundColor: ShilpColors.surface,
     borderTopWidth: 1,
     borderTopColor: ShilpColors.borderLight,
-    height: 60,
-    paddingBottom: 6,
-    paddingTop: 4,
+    height: 64,
+    paddingBottom: 8,
+    paddingTop: 6,
   },
   tabLabel: {
     ...Typography.caption,

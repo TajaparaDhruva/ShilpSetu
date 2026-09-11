@@ -1,31 +1,24 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+﻿import React from 'react';
+import { View, Text, StyleSheet, ViewStyle } from 'react-native';
 import colors from '../theme/colors';
-import typography from '../theme/typography';import { jsx as _jsx } from "react/jsx-runtime";
-
-
-
-
-
-
-
+import typography from '../theme/typography';
 
 export const StatusBadge = ({ status, style }) => {
   const isSuccess = status === 'In Stock' || status === 'Delivered';
 
-  return (/*#__PURE__*/
-    _jsx(View, {
-      style: [
-      styles.badge,
-      isSuccess ? styles.successBg : styles.warningBg,
-      style], children: /*#__PURE__*/
-
-
-      _jsx(Text, { style: [styles.text, isSuccess ? styles.successText : styles.warningText], children:
-        status }
-      ) }
-    ));
-
+  return (
+    <View
+      style={[
+        styles.badge,
+        isSuccess ? styles.successBg : styles.warningBg,
+        style,
+      ]}
+    >
+      <Text style={[styles.text, isSuccess ? styles.successText : styles.warningText]}>
+        {status}
+      </Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -33,25 +26,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 999,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   successBg: {
-    backgroundColor: colors.successBg
+    backgroundColor: colors.successBg,
   },
   warningBg: {
-    backgroundColor: colors.warningBg
+    backgroundColor: colors.warningBg,
   },
   text: {
     fontFamily: typography.fonts.bodyMedium,
     fontSize: 11,
-    fontWeight: '600'
+    fontWeight: '600',
   },
   successText: {
-    color: colors.success
+    color: colors.success,
   },
   warningText: {
-    color: colors.warning
-  }
+    color: colors.warning,
+  },
 });
 
 export default StatusBadge;

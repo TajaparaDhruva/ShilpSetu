@@ -21,7 +21,9 @@ import {
   Truck,
   Plus,
   X,
-  ChevronDown } from
+  ChevronDown,
+  Mic,
+  Sparkles } from
 'lucide-react-native';
 import colors from '../../theme/colors';
 import typography from '../../theme/typography';
@@ -117,7 +119,24 @@ export default function AddProductScreen() {
       ), /*#__PURE__*/
 
       _jsxs(ScrollView, { contentContainerStyle: styles.scrollContent, showsVerticalScrollIndicator: false, children: [/*#__PURE__*/
-
+        _jsxs(TouchableOpacity, {
+          style: styles.aiAssistBanner,
+          onPress: () => router.push('/artisan/voice-input'),
+          activeOpacity: 0.8,
+          children: [/*#__PURE__*/
+            _jsx(View, { style: styles.aiAssistIconBox, children: /*#__PURE__*/
+              _jsx(Mic, { size: 20, color: colors.white })
+            }), /*#__PURE__*/
+            _jsxs(View, { style: { flex: 1 }, children: [/*#__PURE__*/
+              _jsxs(View, { style: { flexDirection: 'row', alignItems: 'center', gap: 4 }, children: [/*#__PURE__*/
+                _jsx(Text, { style: styles.aiAssistTitle, children: "AI Smart Voice Cataloging" }), /*#__PURE__*/
+                _jsx(Sparkles, { size: 14, color: colors.primary })
+              ]}), /*#__PURE__*/
+              _jsx(Text, { style: styles.aiAssistSub, children: "Speak in Hindi/English to auto-generate details & enhanced craft photos" })
+            ]}), /*#__PURE__*/
+            _jsx(Text, { style: styles.aiAssistAction, children: "Try →" })
+          ]
+        }), /*#__PURE__*/
         _jsxs(View, { style: styles.imageSection, children: [/*#__PURE__*/
           _jsxs(View, { style: styles.sectionTitleRow, children: [/*#__PURE__*/
             _jsx(Text, { style: styles.sectionTitle, children: "Product Images *" }), /*#__PURE__*/
@@ -585,5 +604,42 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 12
+  },
+  aiAssistBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FBF4EC',
+    borderWidth: 1.5,
+    borderColor: '#E8D5C4',
+    borderRadius: 16,
+    padding: 14,
+    marginBottom: 20,
+    gap: 12,
+  },
+  aiAssistIconBox: {
+    width: 42,
+    height: 42,
+    borderRadius: 12,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  aiAssistTitle: {
+    fontFamily: typography.fonts.serifBold,
+    fontSize: 14,
+    color: colors.primary,
+  },
+  aiAssistSub: {
+    fontFamily: typography.fonts.bodyRegular,
+    fontSize: 11,
+    color: colors.textBody,
+    marginTop: 2,
+    lineHeight: 15,
+  },
+  aiAssistAction: {
+    fontFamily: typography.fonts.bodySemiBold,
+    fontSize: 13,
+    color: colors.primary,
+    paddingHorizontal: 8,
   }
 });

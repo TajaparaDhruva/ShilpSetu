@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     ...Typography.caption,
-    fontSize: 10,
+    fontSize: 12,
     marginTop: 4,
     alignSelf: 'flex-end',
   },

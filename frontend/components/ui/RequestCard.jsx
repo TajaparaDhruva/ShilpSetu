@@ -48,7 +48,7 @@ export const RequestCard = ({ request }) => {
 
         <View style={styles.detailItem}>
           <IconSymbol name="indianrupeesign.circle.fill" size={14} color={ShilpColors.primary} />
-          <Text style={styles.detailText}>Budget: ₹{request.budget.toLocaleString('en-IN')}</Text>
+          <Text style={styles.detailText}>Budget: ₹{Number(request.budget || 0).toLocaleString('en-IN')}</Text>
         </View>
 
         <View style={styles.detailItem}>

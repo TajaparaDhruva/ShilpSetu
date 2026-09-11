@@ -22,7 +22,7 @@ const IMAGE_HEIGHT = H * 0.72;
 
 // ─── Assets ──────────────────────────────────────────────────────────────────
 const ARTISAN_PHOTO = require('../../assets/images/onboarding_artisan_1.jpg');
-const MASCOT_LOGO = require('../../assets/images/shilpsetu_mascot.jpg');
+const MASCOT_LOGO = require('../../assets/images/logo.png');
 
 // ─── Organic Wave Shape ──────────────────────────────────────────────────────
 function WaveTransition() {

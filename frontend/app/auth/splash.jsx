@@ -16,7 +16,7 @@ import typography from '../../theme/typography';import { jsx as _jsx, jsxs as _j
 const { width: W, height: H } = Dimensions.get('window');
 
 // ─── Asset references ────────────────────────────────────────────────────────
-const MASCOT = require('../../assets/images/shilpsetu_mascot.jpg');
+const MASCOT = require('../../assets/images/logo.png');
 const BOTTOM_SCENE = require('../../assets/images/shilpsetu_bottom_scene.jpg');
 const MANDALA = require('../../assets/images/shilpsetu_mandala.jpg');
 
@@ -34,9 +34,9 @@ function ArtisanThread() {
     C ${W * 0.92} ${H * 0.51}, ${W * 1.05} ${H * 0.52}
   `;
 
-  return (/*#__PURE__*/
-    _jsx(View, { style: StyleSheet.absoluteFill, pointerEvents: "none", children: /*#__PURE__*/
-      _jsx(Svg, { width: W, height: H, style: StyleSheet.absoluteFill, children: /*#__PURE__*/
+  return (
+    _jsx(View, { style: [StyleSheet.absoluteFill, { pointerEvents: "none" }], children:
+      _jsx(Svg, { width: W, height: H, style: StyleSheet.absoluteFill, children:
         _jsx(Path, {
           d: threadPath,
           stroke: "#C0472A",
@@ -105,7 +105,7 @@ export default function SplashScreen() {
       _jsx(ArtisanThread, {}), /*#__PURE__*/
 
 
-      _jsxs(View, { style: styles.topLeft, pointerEvents: "none", children: [/*#__PURE__*/
+      _jsxs(View, { style: [styles.topLeft, { pointerEvents: "none" }], children: [
 
         _jsx(Text, { style: styles.leafSymbol, children: "\u2726" }), /*#__PURE__*/
         _jsxs(View, { style: styles.topLeftRow, children: [/*#__PURE__*/
@@ -246,16 +246,14 @@ const styles = StyleSheet.create({
     marginBottom: -8
   },
 
-  // SHILPSETU wordmark — bold black with white stroke effect
   wordmark: {
     fontFamily: typography.fonts.wordmark,
     fontSize: W * 0.118,
-    fontWeight: '900',
     color: '#1A0F07',
     letterSpacing: 2,
     textShadowColor: '#FFFFFF',
-    textShadowOffset: { width: -2, height: -2 },
-    textShadowRadius: 0,
+    textShadowOffset: { width: -1, height: -1 },
+    textShadowRadius: 1,
     marginTop: 2
   },
 
@@ -299,7 +297,7 @@ const styles = StyleSheet.create({
   // Progress label
   progressLabel: {
     fontFamily: typography.fonts.bodyMedium,
-    fontSize: 9.5,
+    fontSize: 11.5,
     letterSpacing: 2.2,
     color: '#8A7060',
     marginTop: 10,

@@ -1,5 +1,5 @@
-import { en } from './en';
-import { hi } from './hi';
+import { en } from './en.js';
+import { hi } from './hi.js';
 
 
 

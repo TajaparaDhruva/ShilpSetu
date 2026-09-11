@@ -63,7 +63,7 @@ export default function RequestDetailScreen() {
 
             <View style={styles.specBox}>
               <IconSymbol name="indianrupeesign.circle.fill" size={16} color={ShilpColors.primary} />
-              <Text style={styles.specVal}>₹{request.budget.toLocaleString('en-IN')}</Text>
+              <Text style={styles.specVal}>₹{Number(request.budget || 0).toLocaleString('en-IN')}</Text>
               <Text style={styles.specLabel}>Target Budget</Text>
             </View>
 

@@ -148,21 +148,24 @@ export default function ArtisanHomeScreen() {
             _jsx(Text, { style: [styles.quickLabel, { color: colors.primary }], children: "Add Product" })] }
           ), /*#__PURE__*/
 
-          _jsxs(TouchableOpacity, { style: styles.quickCard, children: [/*#__PURE__*/
+          _jsxs(TouchableOpacity, { style: styles.quickCard,
+            onPress: () => router.push('/artisan/buyer-opportunities'), children: [/*#__PURE__*/
             _jsx(View, { style: styles.quickIconBg, children: /*#__PURE__*/
               _jsx(ClipboardList, { size: 20, color: colors.primary }) }
             ), /*#__PURE__*/
             _jsx(Text, { style: styles.quickLabel, children: "View Orders" })] }
           ), /*#__PURE__*/
 
-          _jsxs(TouchableOpacity, { style: styles.quickCard, children: [/*#__PURE__*/
+          _jsxs(TouchableOpacity, { style: styles.quickCard,
+            onPress: () => router.push('/artisan/business-page'), children: [/*#__PURE__*/
             _jsx(View, { style: styles.quickIconBg, children: /*#__PURE__*/
               _jsx(BarChart3, { size: 20, color: colors.primary }) }
             ), /*#__PURE__*/
             _jsx(Text, { style: styles.quickLabel, children: "Analytics" })] }
           ), /*#__PURE__*/
 
-          _jsxs(TouchableOpacity, { style: styles.quickCard, children: [/*#__PURE__*/
+          _jsxs(TouchableOpacity, { style: styles.quickCard,
+            onPress: () => router.push('/artisan/product-library'), children: [/*#__PURE__*/
             _jsx(View, { style: styles.quickIconBg, children: /*#__PURE__*/
               _jsx(Store, { size: 20, color: colors.primary }) }
             ), /*#__PURE__*/
@@ -260,17 +263,17 @@ const styles = StyleSheet.create({
   },
   greetingSub: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 11,
+    fontSize: 12,
     color: colors.textMuted
   },
   greetingName: {
     fontFamily: typography.fonts.serifBold,
-    fontSize: 15,
+    fontSize: 17,
     color: colors.textDark
   },
   greetingTagline: {
     fontFamily: typography.fonts.script,
-    fontSize: 12,
+    fontSize: 13,
     color: colors.primary
   },
   headerRight: {
@@ -416,7 +419,7 @@ const styles = StyleSheet.create({
   },
   quickLabel: {
     fontFamily: typography.fonts.bodyMedium,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textDark,
     textAlign: 'center'
   },
@@ -541,7 +544,7 @@ const styles = StyleSheet.create({
   },
   orderDate: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textMuted,
     marginTop: 2
   },

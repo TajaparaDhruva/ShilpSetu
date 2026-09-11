@@ -1,52 +1,13 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const CATEGORIES = [
+  { id: '1', name: 'Pottery', label: 'Pottery', icon: 'cube.box.fill' },
+  { id: '2', name: 'Wood Craft', label: 'Wood Craft', icon: 'hammer.fill' },
+  { id: '3', name: 'Textiles', label: 'Textiles', icon: 'sparkles' },
+  { id: '4', name: 'Metal Craft', label: 'Metal Craft', icon: 'flame.fill' },
+  { id: '5', name: 'Paintings', label: 'Paintings', icon: 'sparkles' },
+  { id: '6', name: 'Jewelry', label: 'Jewelry', icon: 'sparkles' },
+  { id: '7', name: 'Leather', label: 'Leather', icon: 'cube.box.fill' },
+  { id: '8', name: 'Home Decor', label: 'Home Decor', icon: 'flame.fill' },
+];
 
 export const MOCK_USER = {
   id: 'artisan_101',

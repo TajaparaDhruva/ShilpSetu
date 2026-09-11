@@ -16,10 +16,12 @@ import { useApp } from '../../context/AppContext';
 
 export default function BuyerProfileScreen() {
   const router = useRouter();
-  const { requests, notifications } = useApp();
+  const appContext = useApp() || {};
+  const requests = Array.isArray(appContext.requests) ? appContext.requests : [];
+  const notifications = Array.isArray(appContext.notifications) ? appContext.notifications : [];
 
-  const activeRequests = requests.filter((r) => r.status === 'Active' || r.status === 'Quotes Received').length;
-  const unreadNotifs = notifications.filter((n) => !n.read).length;
+  const activeRequests = requests.filter((r) => r && (r.status === 'Active' || r.status === 'Quotes Received')).length;
+  const unreadNotifs = notifications.filter((n) => n && !n.read).length;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -106,7 +108,17 @@ export default function BuyerProfileScreen() {
           </View>
         </View>
 
-        <Pressable style={styles.logoutBtn}>
+        <View style={styles.menuSection}>
+          <Text style={styles.menuHeader}>Switch View</Text>
+
+          <Pressable style={styles.menuItem} onPress={() => router.replace('/(artisan-tabs)/home')}>
+            <IconSymbol name="arrow.triangle.2.circlepath" size={20} color={ShilpColors.primary} />
+            <Text style={styles.menuTitle}>Switch to Seller / Artisan View</Text>
+            <IconSymbol name="chevron.right" size={16} color={ShilpColors.textMuted} />
+          </Pressable>
+        </View>
+
+        <Pressable style={styles.logoutBtn} onPress={() => router.replace('/auth/get-started')}>
           <IconSymbol name="arrow.right.square" size={18} color={ShilpColors.error} />
           <Text style={styles.logoutText}>Sign Out</Text>
         </Pressable>

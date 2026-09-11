@@ -38,7 +38,7 @@ export const QuoteCard = ({ quote, onSelect }) => {
         <View style={styles.priceRow}>
           <View>
             <Text style={styles.label}>Quoted Price</Text>
-            <Text style={styles.price}>₹{quote.price.toLocaleString('en-IN')}</Text>
+            <Text style={styles.price}>₹{Number(quote.price || 0).toLocaleString('en-IN')}</Text>
           </View>
           <View style={styles.deliveryBox}>
             <Text style={styles.label}>Delivery Time</Text>

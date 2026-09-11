@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   },
   checkText: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textDark,
     flex: 1
   },

@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
   uploadNote: {
     fontFamily: typography.fonts.bodyRegular,
-    fontSize: 10,
+    fontSize: 12,
     color: colors.textMuted,
     marginTop: 4
   },
